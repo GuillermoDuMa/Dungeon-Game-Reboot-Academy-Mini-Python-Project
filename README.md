@@ -52,7 +52,7 @@ Una trampa se activará cuando el jugador avanza y tendrá la posibilidad de esq
           # trampa(jugador)
 
 ● Combate: 
-El jugador se topará con un enemigo al que tendrá que batir para poder continuar. Diversidad de enemigos:
+El jugador se topará con un enemigo al que tendrá que batir para poder continuar.
 
           def combate(jugador):
               enemigos_posibles = [Goblin(), CriaturaDelLodo(), GuardianDeLaMazmorra()]
