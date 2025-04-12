@@ -125,17 +125,17 @@ Todo esto se integrará dentro de la clase Jugador:
 
 Los enemigos se clasificarán en nivel de dificultad fácil, intermedia y difícil:
 
-class Enemigo:
-    def __init__(self, nombre, vida, fuerza):
-        self.nombre = nombre
-        self.vida = vida
-        self.fuerza = fuerza
+          class Enemigo:
+              def __init__(self, nombre, vida, fuerza):
+                  self.nombre = nombre
+                  self.vida = vida
+                  self.fuerza = fuerza
 
-    def atacar(self):
-        return random.randint(1, self.fuerza)
+              def atacar(self):
+                  return random.randint(1, self.fuerza)
 
-    def mostrar(self):
-        print(f"\n¡Un {self.nombre} aparece! Vida: {self.vida}, Fuerza: {self.fuerza}")
+              def mostrar(self):
+                  print(f"\n¡Un {self.nombre} aparece! Vida: {self.vida}, Fuerza: {self.fuerza}")
 
 ● ENEMIGO DIFICULTAD FACIL:
 
