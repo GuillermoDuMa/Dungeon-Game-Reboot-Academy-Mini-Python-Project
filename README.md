@@ -139,21 +139,21 @@ class Enemigo:
 
 ● ENEMIGO DIFICULTAD FACIL:
 
-class Goblin(Enemigo):
-    def __init__(self):
-        super().__init__("Goblin", vida=20, fuerza=5)
+          class Goblin(Enemigo):
+              def __init__(self):
+                  super().__init__("Goblin", vida=20, fuerza=5)
 
 ● ENEMIGO DIFICULTAD INTERMEDIA: 
 
-class CriaturaDelLodo(Enemigo):
-    def __init__(self):
-        super().__init__("Criatura del Lodo", vida=35, fuerza=8)
+          class CriaturaDelLodo(Enemigo):
+              def __init__(self):
+                  super().__init__("Criatura del Lodo", vida=35, fuerza=8)
 
 ● ENEMIGO DIFICULTAD DIFICIL:
 
-class GuardianDeLaMazmorra(Enemigo):
-    def __init__(self):
-        super().__init__("Guardián de la Mazmorra", vida=50, fuerza=12)
+          class GuardianDeLaMazmorra(Enemigo):
+              def __init__(self):
+                  super().__init__("Guardián de la Mazmorra", vida=50, fuerza=12)
 
 
 
