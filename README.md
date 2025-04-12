@@ -14,10 +14,10 @@ eligiendo entre diferentes caminos.
 
 El juego iniciará solicitando al jugador elegir un nombre y una de las tres razas disponibles para el héroe:
 
-raza =  {  "enano": {"vida": 120, "fuerza": 8, "defensa": 10},
-          "elfo": {"vida": 100, "fuerza": 10, "defensa": 6},
-          "hombre": {"vida": 110, "fuerza": 9, "defensa": 8
-        }
+          raza =  {  "enano": {"vida": 120, "fuerza": 8, "defensa": 10},
+                    "elfo": {"vida": 100, "fuerza": 10, "defensa": 6},
+                    "hombre": {"vida": 110, "fuerza": 9, "defensa": 8
+                  }
 
 Posteriormente el jugador tendrá que elegir entre una serie de puertas para iniciar la aventura, y a partir de aqui, el juego se desarrollará en un bucle FOR de 5 iteraciones. 
 
