@@ -2,7 +2,7 @@
 
 ## Escape de la mazmorra 
 
-proyecto conjunto ente @GuillermoDuMa y @Ciara
+proyecto conjunto ente @GuillermoDuMa y @CiaraBootcamp
 ### Requisitos iniciales proyecto: 
 
 DungeonEscape_Basic:
