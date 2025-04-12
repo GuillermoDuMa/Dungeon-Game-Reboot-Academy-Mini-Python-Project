@@ -26,30 +26,30 @@ La puerta elegida generará un evento de entre los siguientes:
 ● Trampa:
 Una trampa se activará cuando el jugador avanza y tendrá la posibilidad de esquivarla mediante una mecánica de elección de un número del 1 al 10. Si el numero coincide con el numero que se generará aleatoriamente, logrará esquivar la trampa. Si no, recibirá daño y la aventura continuará. Habrá tambien interacciones con el npc aliado con el que contará el jugador.
 
-def trampa(jugador):
-    print("\n¡Has activado una trampa!")
+          def trampa(jugador):
+              print("\n¡Has activado una trampa!")
     
-    try:
-        eleccion = int(input("Rápido, elige un número del 1 al 10 para intentar esquivarla: "))
-        if eleccion < 1 or eleccion > 10:
-            print("Número fuera de rango. No logras reaccionar a tiempo.")
-            eleccion = -1  # Fuerza un fallo
-    except ValueError:
-        print("¡Eso no era un número válido! Tropiezas directamente con la trampa.")
-        eleccion = -1
+              try:
+                  eleccion = int(input("Rápido, elige un número del 1 al 10 para intentar esquivarla: "))
+                  if eleccion < 1 or eleccion > 10:
+                      print("Número fuera de rango. No logras reaccionar a tiempo.")
+                      eleccion = -1  # Fuerza un fallo
+              except ValueError:
+                  print("¡Eso no era un número válido! Tropiezas directamente con la trampa.")
+                  eleccion = -1
 
-    numero_secreto = random.randint(1, 10)
+              numero_secreto = random.randint(1, 10)
     
-    if eleccion == numero_secreto:
-        print("\033[92m¡Has esquivado la trampa con éxito!\033[0m")
-    else:
-        daño = random.randint(5, 15)
-        jugador.vida -= daño
-        print(f"\033[91m¡La trampa se activa! Pierdes {daño} de vida.\033[0m Vida restante: {jugador.vida}")
+              if eleccion == numero_secreto:
+                  print("\033[92m¡Has esquivado la trampa con éxito!\033[0m")
+              else:
+                  daño = random.randint(5, 15)
+                  jugador.vida -= daño
+                  print(f"\033[91m¡La trampa se activa! Pierdes {daño} de vida.\033[0m Vida restante: {jugador.vida}")
 
-Cómo llamarla desde el flujo principal: 
+          # Cómo llamarla desde el flujo principal: 
 
-trampa(jugador)
+          # trampa(jugador)
 
 ● Combate: 
 El jugador se topará con un enemigo al que tendrá que batir para poder continuar. Diversidad de enemigos:
