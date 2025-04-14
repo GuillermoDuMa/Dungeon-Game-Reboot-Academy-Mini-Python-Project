@@ -66,7 +66,7 @@ for word in caption_intro1:
 time.sleep(1)
 #### FOR
 
-choose_action()
+choose_action(protagonist)
 
 
 for advance in range(5):
