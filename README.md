@@ -1,5 +1,8 @@
 # Dungeon-Game-Reboot-Academy-Mini-Python-Project
 
+![ChatGPT Image Apr 14, 2025, 03_45_20 PM](https://github.com/user-attachments/assets/0b225f6a-e772-48a1-80da-34364f5b71ed)
+
+
 ## Escape de la mazmorra 
 
 proyecto conjunto ente @GuillermoDuMa y @CiaraBootcamp
