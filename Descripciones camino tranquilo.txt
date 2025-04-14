@@ -1,0 +1,63 @@
+Dialogo inicial con NPC:
+
+- caption_intro1 = """\033[32mNotas una helada brisa en la nuca, arrugas los ojos y parpadeas con esfuerzo. Te levantas, la cabeza te da vueltas como si te hubieran golpeado.
+Luchas por ver frente a ti, esta oscuro; increiblemente oscuro salvo por las antorchas que iluminan las paredes. Consigues ver algo cerca tuya. ¿Que es...?\033[0m
+\033[33mPor fin despiertas\033[0m \033[32m---Escuchas y meneas la cabeza.\033[0m
+\033[33m¿Donde estoy?\033[0m \033[32m--susurras. \033[0m
+\033[33mEstamos atrapados. \033[0m \033[32m--dice la silueta. No reconoces... esa voz.\033[0m"""
+¿Atrapados? --preguntas--. ¿Cómo que atrapados?
+Sé lo mismo que tú, compañero. Deberíamos buscar una salida.
+Miras a tu alrededor una vez más. Hay... varios caminos más adelante.
+
+
+Descripciones camino tranquilo:
+
+1.
+"Continuas tu camino por la oscura y húmeda mazmorra. La sensacion de desamparo te abruma, pero debes seguir adelante."
+"No sé como hemos llegado aquí ni por qué, pero algo me dice que esto es obra del destino. -Dice tu compañero mientras cruzais el umbral".
+"El silencio de la cueva te pone los pelos de punta. Está vacío, demasiado vacío como para que sea buena señal."
+"Notas una ligera brisa de aire desde más adelante. Si la salida está ahí, merecerá la pena continuar sea lo que sea que enfrentes".
+"Pisas un charco de agua. ¡Agua! Aprovechas y bebes. Tu compañero te mira con recelo. ¿Será potable? Aun así, estás muerto de sed."
+
+2. 
+'path6': 'Detectas rastros de sangre por el suelo y las paredes... --se han cometido atrocidades aquí. --dices entre murmullos.',
+'path7': 'Vaya ánimos que me traes compañero. Debemos salir de aquí antes de que se percaten de que hemos escapado de la celda.'}  
+
+
+- Un murciélago te sobresalta. Delante de ti hay una estancia llena de utensilios de tortura manchados de sangre. Ha sido utilizada recientemente.
+- No estábamos solos en la celda, con nosotros había otros 3 compañeros, pero se los han ido llevando poco a poco y cada vez podia escuchar sus gritos.
+- ¿Cuánto tiempo he estado inconsciente?
+- Dos días. Se habrian deshecho de ti, pero les oi decir que prefieren esperar a que estes despierto. Responde tu compañero.
+- Prefieres no pensar para qué.
+De repente oyes el eco de un tintineo de unas cadenas en la cercanía. No es momento para demorarse...
+
+print(- f"'¿Qué hiciste para acabar aquí, {protagonist.name}' preguntó el compañero?"
+print("De repente, imágenes de lo que podría ser tu pasado cercano te vienen a la mente. Ves la imagen de un campo de batalla, estás agotado y arrodillado junto a muchos otros. Ves frente a ti la silueta de un guerrero que lleva un uniforme distinto al tuyo. 
+Te habla pero su voz se disuelve en tu memoria a medida que recuperas el sentido. -¿Estas bien? De repente perdiste el conocimiento y nos hemos desplomado. - Dijo tu compañero con preocupación en su voz. -Sí, creo que estoy recuperando la memoria. Debemos continuar. Dices mientras te reincorporas y agarras a tu compañero. Debemos reanudar la marcha. Cada minuto cuenta." 
+
+
+- Ese combate te ha dejado exhausto amigo. Deberíamos descansar.
+-No, debemos continuar, no quiero pasar ni un minuto mas del necesario en este lugar. Ademas, algo me dice que falta poco para llegar a la superficie.
+- Lamento no poder ser de ayuda.
+
+-Un dolor de cabeza te atormenta, te tambaleas y notas el frío de la tierra en la cara.
+-¿¡Estás bien!? --pregunta tu compañero.
+Te levantas con su ayuda.
+--Sí. Siento como si... hubiera salido de algo... brutal. --Balbuceas. ¿Una guerra, quizás?-- Estoy bien, sigamos.
+
+
+Diálogo goblin:
+
+- Vaya vaya, así que estas dos sabandijas han escapado de su celda, en estos casos el amo nos da permiso para hacer con vosotros lo que nos plazca, ¡Asi que voy a divertirme un poco! dice el goblin, mientras se lanza al ataque.
+
+- A mi me habréis derrotado, pero hay horrores peores esperándoos mas adelante, no saldréis de aquí con vida. Especialmente si él o su mascota os encuentran... UGH XO
+
+Dialogo criatura del lodo:
+
+- De repente ves como una criatura viscosa aparece de entre la oscuridad arrastándose hacia ti.Puedes ver que no tiene ojos y lo único que logras ver es una boca gigante llena de dientes y un hedor insoportable inundando la estancia donde te encuentras. 
+De repente la criatura lanza lo que solo puedes describir como un aullido de otro mundo que aturde tus sentidos mientras se lanza al ataque. Este adversario no debe ser subestimado. 
+
+Dialogo guardián de la mazmorra:
+
+De repente oyes como una de las paredes se hace añicos con un golpe atronador. - Vaya, vaya, así que es verdad que habéis escapado. Ese estúpido goblin pagará caro este error, pero por ahora me voy a encargar personalmente de devolveros al agujero al que pertenecéis. Le prometí a a mi mascota sangre fresca y se la voy a dar, no sin antes daros una lección sobre lo que es el dolor. ¡AAGGGGH!. Grita el guardián mientras se abalanza sobre vosotros. 
+¡Has topado con el amo del calabozo! Si derrotas a este adversario, la llave de la libertad está más cerca.
