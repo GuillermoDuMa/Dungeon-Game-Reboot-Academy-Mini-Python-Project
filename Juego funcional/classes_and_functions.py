@@ -132,11 +132,26 @@ def quiet_advance(protagonist):
 
 def doors():
     how_many_doors = random.randint(1, 5)
+    
     print("Tienes",how_many_doors,"puertas ante ti.")
-    choose_door = input("¿Cuál eliges?")
+    while True:
+        try:
+            choose_door = int(input("¿Cuál eliges?: "))
+        except ValueError:
+            print("No es un número válido. Intenta de nuevo.")
+            continue
+        if choose_door < 1 or choose_door > how_many_doors:
+            print("No existe esa puerta, zopenco! Elige sabiamente")
+            continue
+        else:
+            break
     print(f"has elegido la puerta {choose_door} buena suerte aventurero")
-    return choose_door
+
+    #return choose_door
+
+
         
+    
 
 def event(protagonist):
      event = random.choice(["trap", "combat", "nothing"])
@@ -144,6 +159,6 @@ def event(protagonist):
          trap(protagonist)
      elif event == "combat":
          combat(protagonist)
-     elif event == "quiet_advance":
+     elif event == "nothing":
          print(quiet_advance(protagonist))
 
