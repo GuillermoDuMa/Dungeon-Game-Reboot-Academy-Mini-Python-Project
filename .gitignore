@@ -6,7 +6,7 @@ __pycache__/
 # C extensions
 *.soç
 gpt.py
- 
+q.py
 # Distribution / packaging
 .Python
 build/
