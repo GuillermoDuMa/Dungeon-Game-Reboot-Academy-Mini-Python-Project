@@ -16,7 +16,7 @@ class Player:
         self.defence = chosen_race[race]["defence"]
     
     def attack(self):
-            return self.strength
+            return random.randint(1, self.strength)
 
     def take_damage(self, damage):
             actual_damage = max(0, damage - self.defence)
@@ -93,7 +93,7 @@ def combat(protagonist):
                   print(f"\n¡Has derrotado al {enemy.name}!")
                   return
       # Turno del Enemigo
-              enemy_damage = enemy.strength
+              enemy_damage = enemy.Attack()
               damage_taken = protagonist.take_damage(enemy_damage)
               print(f"El {enemy.name} te ataca y te hace {damage_taken} de daño. Tu health: {protagonist.health}")
               time.sleep(1)
@@ -132,7 +132,6 @@ def quiet_advance(protagonist):
 
 def doors():
     how_many_doors = random.randint(1, 5)
-    
     print("Tienes",how_many_doors,"puertas ante ti.")
     while True:
         try:
