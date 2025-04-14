@@ -31,9 +31,11 @@ La puerta elegida generará un evento de entre los siguientes:
 ● ELegir puerta: Todos los eventos iran precedidos por una elección de una puerta.
 
           def doors():
-              how_many_doors = random.randint(1, 5)
-    
-              print("Tienes",how_many_doors,"puertas ante ti.")
+              how_many_doors = random.randint(2, 5)
+              caption7 = ("\033[34mTienes ",how_many_doors," puertas ante ti.\033[0m\n")
+              for word in caption7:
+                  print(word, end="", flush=True)
+              time.sleep(0.02)
               while True:
                   try:
                       choose_door = int(input("¿Cuál eliges?: "))
@@ -41,78 +43,95 @@ La puerta elegida generará un evento de entre los siguientes:
                       print("No es un número válido. Intenta de nuevo.")
                       continue
                   if choose_door < 1 or choose_door > how_many_doors:
-                      print("No existe esa puerta, zopenco! Elige sabiamente")
+                      print("¡No existe esa puerta, zopenco! Elige sabiamente")
                       continue
                   else:
                       break
-           print(f"has elegido la puerta {choose_door} buena suerte aventurero")
+              print(f"\033[34mHas elegido la puerta {choose_door} ¡Suerte en tu porvenir!\033[0m")
+              time.sleep(2)
 
 
 ● Trampa:
 Una trampa se activará cuando el jugador avanza y tendrá la posibilidad de esquivarla mediante una mecánica de elección de un número del 1 al 10. Si el numero coincide con el numero que se generará aleatoriamente, logrará esquivar la trampa. Si no, recibirá daño y la aventura continuará. Habrá tambien interacciones con el npc aliado con el que contará el jugador.
 
           def trap(protagonist):
-          print("\n¡Has activado una trampa!")
-
-          try:
-              choice = int(input("Rápido, elige un número del 1 al 10 para intentar esquivarla: "))
-              if choice < 1 or choice > 10:
-                  print("Número fuera de rango. No logras reaccionar a tiempo.")
-                  choice = -1  # Fuerza un fallo
-          except ValueError:
-              print("¡Eso no era un número válido! Tropiezas directamente con la trap.")
-              choice = -1
-
-          secret_number = random.randint(1, 10)
-
-          if choice == secret_number:
-              print("\033[92m¡Has esquivado la trap con éxito!\033[0m")
-          else:
-              damage = random.randint(5, 15)
-              protagonist.health -= damage
-              print(f"\033[91m¡La trap se activa! Pierdes {damage} de health.\033[0m Vida restante: {protagonist.health}")
+                    print("\n\033[31m¡Has activado una trampa!\033[0m")
+          
+                    try:
+                        choice = int(input("Rápido, elige un número del 1 al 10 para intentar esquivarla: "))
+                        if choice < 1 or choice > 10:
+                            print("Número fuera de rango. No logras reaccionar a tiempo.")
+                            choice = -1  # Fuerza un fallo
+                    except ValueError:
+                        print("¡Eso no era un número válido! Tropiezas directamente con la trap.")
+                        choice = -1
+          
+                    secret_number = random.randint(1, 10)
+          
+                    if choice == secret_number:
+                        print("\033[92m¡Has esquivado la trap con éxito!\033[0m")
+                    else:
+                        damage = random.randint(5, 15)
+                        protagonist.health -= damage
+                        print(f"\033[91m¡La trap se activa! Pierdes {damage} de health.\033[0m Vida restante: {protagonist.health}")
 
 ● Combate: 
 El jugador se topará con un enemigo al que tendrá que batir para poder continuar.
 
           def combat(protagonist):
-          possible_enemies = [Goblin(), Abyss_creature(), Dungeon_boss()]
-          enemy = random.choice(possible_enemies)
-          enemy.Appear()
-          print("¡Prepárate para luchar!")
-
-          while enemy.health > 0 and protagonist.is_alive():
-      # Turno del protagonista
-              protagonist_damage = protagonist.attack()
-              enemy.health -= protagonist_damage
-              print(f"\nAtacas al {enemy.name} y le haces {protagonist_damage} de daño. Vida del Enemy: {enemy.health}")
-
-              if enemy.health <= 0:
-                  print(f"\n¡Has derrotado al {enemy.name}!")
-                  return
-      # Turno del Enemigo
-              enemy_damage = enemy.strength
-              damage_taken = protagonist.take_damage(enemy_damage)
-              print(f"El {enemy.name} te ataca y te hace {damage_taken} de daño. Tu health: {protagonist.health}")
-              time.sleep(1)
-
-          if not protagonist.is_alive():
-              print(f"\nEl {enemy.name} te ha derrotado...")
+                    possible_enemies = [Goblin(), Abyss_creature(), Dungeon_boss()]
+                    enemy = random.choice(possible_enemies)
+                    enemy.Appear()
+                    caption8 = "\033[31m¡Prepárate para luchar!\033[0m"
+                    for letra in caption8:
+                      print(letra, end="", flush=True)
+                    time.sleep(0.02)
+          
+                    while enemy.health > 0 and protagonist.is_alive():
+                # Turno del protagonista
+                        protagonist_damage = protagonist.attack()
+                        enemy.health -= protagonist_damage
+                        caption9 = f"\n\033[34mAtacas al {enemy.name} y le haces {protagonist_damage} de daño. Vida del enemigo: {enemy.health}\033[0m\n"
+                        for letra in caption9:
+                          print(letra, end="", flush=True)
+                          time.sleep(0.02)
+          
+                        if enemy.health <= 0:
+                            caption10 = f"\n\033[34m¡Has derrotado al {enemy.name}!\033[0m\n"
+                            for letra in caption10:
+                              print(letra, end="", flush=True)
+                              time.sleep(0.02)
+                            return
+                # Turno del Enemigo
+                        enemy_damage = enemy.Attack()
+                        damage_taken = protagonist.take_damage(enemy_damage)
+                        caption11 =  f"\033[31mEl {enemy.name} te ataca y te hace {damage_taken} de daño. Tu health: {protagonist.health}\033[0m\n"
+                        for letra in caption11:
+                              print(letra, end="", flush=True)
+                              time.sleep(0.02)
+                        time.sleep(1)
+          
+                    if not protagonist.is_alive():
+                        caption12 = f"\n\033[31mEl {enemy.name} te ha derrotado...\033[0m"
+                        for letra in caption12:
+                              print(letra, end="", flush=True)
+                              time.sleep(0.02)
 
 
 ● Cueva/camino tranquilo:
 El jugador no encontrará obstáculos. Estos tramos se aprovecharán para dar contexto a la historia y ofrecer descripciones del lugar y dar pie a diaologos con el npc aliado.
 
           def quiet_advance(protagonist):
-    path_random = {'path1':"Continuas tu camino por la oscura y húmeda mazmorra. La sensación de desamparo te abruma, pero debes seguir adelante.", 
-    'path2':"No sé como hemos llegado aquí ni por qué, pero algo me dice que esto es obra del destino. -Dice tu compañero mientras cruzáis el umbral",
-    'path4': "Notas una ligera brisa de aire desde más adelante. Si la salida está ahí, merecerá la pena continuar sea lo que sea que enfrentes",
-    'path5': "Pisas un charco de agua. ¡Agua! Aprovechas y bebes. Tu compañero te mira con recelo. ¿Será potable? Aun así, estás muerto de sed.",
-    'path6': 'Detectas rastros de sangre por el suelo y las paredes... --se han cometido atrocidades aquí. --dices entre murmullos.',
-    'path7': 'Vaya ánimos que me traes compañero. Debemos salir de aquí antes de que se percaten de que hemos escapado de la celda.'
-    } 
-    path = random.choice(list(path_random.values()))
-    return path 
+     
+              path_random = {'path1':"\033[32mContinuas tu camino por la oscura y húmeda mazmorra. La sensación de desamparo te abruma, pero debes seguir adelante.\033[0m", 
+              'path2':"\033[33mNo sé como hemos llegado aquí ni por qué, pero algo me dice que esto es obra del destino.\033[0m \033[32m-Dice tu compañero mientras cruzáis el umbral.\033[0m",
+              'path3': "\033[32mNotas una ligera brisa de aire desde más adelante. Si la salida está ahí, merecerá la pena continuar sea lo que sea que enfrentes\033[0m",
+              'path4': "\033[32mPisas un charco de agua. ¡Agua! Aprovechas y bebes. Tu compañero te mira con recelo. ¿Será potable? Aun así, estás muerto de sed.\033[0m",
+              'path5': '\033[32mDetectas rastros de sangre por el suelo y las paredes...\033[0m \033[33m-Se han cometido atrocidades aquí.\033[0m \033[32m-dices entre murmullos-.\033[0m \n'
+              '\033[33mVaya ánimos que me traes compañero. Debemos salir de aquí antes de que se percaten de que hemos escapado de la celda.\033[0m'
+              } 
+              path = random.choice(list(path_random.values()))
+              return path 
     
 y a partir de aquí, una función random generará los siguientes eventos a ocurrir, de entre los anteriormente descritos.
 
@@ -127,55 +146,53 @@ A lo largo del juego, el jugador podrá realizar las siguientes acciones:
 
 Todo esto se integrará dentro de la clase Jugador:
 
-          class Jugador:
-              def __init__(self, nombre, raza):
-                  self.nombre = nombre
-                  self.raza = raza
-                  self.vida = race[raza]["vida"]
-                  self.fuerza = race[raza]["fuerza"]
-                  self.defensa = race[raza]["defensa"]
-
-              def atacar(self):
-                  return self.fuerza
-
-              def recibir_daño(self, daño):
-                  daño_real = max(0, daño - self.defensa)
-                  self.vida -= daño_real
-                  return daño_real
-
-              def esta_vivo(self):
-                  return self.vida > 0
-
-              def mostrar_stats(self):
-                  print(f"{self.nombre} el {self.raza.capitalize()} - Vida: {self.vida}, Fuerza: {self.fuerza}, Defensa: {self.defensa}")
+          class Player:
+              def __init__(self, name, race):
+                  self.name = name
+                  self.race = race
+                  self.health = chosen_race[race]["health"]
+                  self.strength = chosen_race[race]["strength"]
+                  self.defence = chosen_race[race]["defence"]
+              
+              def attack(self):
+                      return random.randint(1, self.strength)
+          
+              def take_damage(self, damage):
+                      actual_damage = max(0, damage - self.defence)
+                      self.health -= actual_damage
+                      return actual_damage
+          
+              def is_alive(self):
+                      return self.health > 0
  
 ### Enemigos 
 
 Los enemigos se clasificarán en nivel de dificultad fácil, intermedia y difícil:
 
-          class Enemigo:
-              def __init__(self, nombre, vida, fuerza):
-                  self.nombre = nombre
-                  self.vida = vida
-                  self.fuerza = fuerza
-
-              def atacar(self):
-                  return random.randint(1, self.fuerza)
-
-              def mostrar(self):
-                  print(f"\n¡Un {self.nombre} aparece! Vida: {self.vida}, Fuerza: {self.fuerza}")
+          class Enemy:
+              def __init__(self, name, health, strength):
+                  self.name = name
+                  self.health = health
+                  self.strength = strength
+          
+              def Attack(self):
+                      return random.randint(1, self.strength)
+          
+              def Appear(self):
+                  print(f"\n\033[31m¡Un {self.name} aparece! Vida: {self.health}, Fuerza: {self.strength}\033[0m")
+                  time.sleep(2)
 
 ● ENEMIGO DIFICULTAD FACIL:
 
-          class Goblin(Enemigo):
+          class Goblin(Enemy):
               def __init__(self):
-                  super().__init__("Goblin", vida=20, fuerza=5)
+                  super().__init__("Goblin", health=20, strength=15)
 
 ● ENEMIGO DIFICULTAD INTERMEDIA: 
 
-          class CriaturaDelLodo(Enemigo):
+          class Dungeon_boss(Enemy):
               def __init__(self):
-                  super().__init__("Criatura del Lodo", vida=35, fuerza=8)
+                  super().__init__("Guardián de la Mazmorra", health=50, strength=50)
 
 ● ENEMIGO DIFICULTAD DIFICIL:
 
