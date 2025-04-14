@@ -19,10 +19,10 @@ eligiendo entre diferentes caminos.
 El juego iniciará solicitando al jugador elegir un nombre y una de las tres razas disponibles para el héroe:
 
           chosen_race =  {
-                        "dwarf": {"health": 120, "strength": 8, "defence": 10},
-                        "elf": {"health": 100, "strength": 10, "defence": 6},
-                        "human": {"health": 110, "strength": 9, "defence": 8}
-                         } 
+              "dwarf": {"health": 125, "strength": 10, "defence": 9},
+              "elf": {"health": 90, "strength": 20, "defence": 6},
+              "human": {"health": 110, "strength": 15, "defence": 8}
+                  }
 
 Posteriormente el jugador tendrá que elegir entre una serie de puertas para iniciar la aventura, y a partir de aqui, el juego se desarrollará en un bucle FOR de 5 iteraciones. 
 
