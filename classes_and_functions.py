@@ -2,9 +2,9 @@ import time
 import random
 
 chosen_race =  {
-    "dwarf": {"health": 120, "strength": 8, "defence": 10},
-    "elf": {"health": 100, "strength": 10, "defence": 6},
-    "human": {"health": 110, "strength": 9, "defence": 8}
+    "dwarf": {"health": 125, "strength": 10, "defence": 9},
+    "elf": {"health": 90, "strength": 20, "defence": 6},
+    "human": {"health": 110, "strength": 15, "defence": 8}
         }
 
 class Player:
@@ -16,7 +16,7 @@ class Player:
         self.defence = chosen_race[race]["defence"]
     
     def attack(self):
-            return self.strength
+            return random.randint(1, self.strength)
 
     def take_damage(self, damage):
             actual_damage = max(0, damage - self.defence)
@@ -38,26 +38,27 @@ class Enemy:
             return random.randint(1, self.strength)
 
     def Appear(self):
-        print(f"\n¡Un {self.name} aparece! Vida: {self.health}, Fuerza: {self.strength}")
+        print(f"\n\033[31m¡Un {self.name} aparece! Vida: {self.health}, Fuerza: {self.strength}\033[0m")
+        time.sleep(2)
 
 
 class Goblin(Enemy):
     def __init__(self):
-        super().__init__("Goblin", health=20, strength=5)
+        super().__init__("Goblin", health=20, strength=15)
 
 class Abyss_creature(Enemy):
     def __init__(self):
-        super().__init__("The creature of the abyss", health=35, strength=8)
+        super().__init__("The creature of the abyss", health=35, strength=25)
 
 class Dungeon_boss(Enemy):
     def __init__(self):
-        super().__init__("Guardián de la Mazmorra", health=50, strength=12)
+        super().__init__("Guardián de la Mazmorra", health=50, strength=50)
 
 
 # FUNCIONES:
 
 def trap(protagonist):
-          print("\n¡Has activado una trampa!")
+          print("\n\033[31m¡Has activado una trampa!\033[0m")
 
           try:
               choice = int(input("Rápido, elige un número del 1 al 10 para intentar esquivarla: "))
@@ -81,62 +82,98 @@ def combat(protagonist):
           possible_enemies = [Goblin(), Abyss_creature(), Dungeon_boss()]
           enemy = random.choice(possible_enemies)
           enemy.Appear()
-          print("¡Prepárate para luchar!")
+          caption8 = "\033[31m¡Prepárate para luchar!\033[0m"
+          for letra in caption8:
+            print(letra, end="", flush=True)
+          time.sleep(0.02)
 
           while enemy.health > 0 and protagonist.is_alive():
       # Turno del protagonista
               protagonist_damage = protagonist.attack()
               enemy.health -= protagonist_damage
-              print(f"\nAtacas al {enemy.name} y le haces {protagonist_damage} de daño. Vida del Enemy: {enemy.health}")
+              caption9 = f"\n\033[34mAtacas al {enemy.name} y le haces {protagonist_damage} de daño. Vida del enemigo: {enemy.health}\033[0m\n"
+              for letra in caption9:
+                print(letra, end="", flush=True)
+                time.sleep(0.02)
 
               if enemy.health <= 0:
-                  print(f"\n¡Has derrotado al {enemy.name}!")
+                  caption10 = f"\n\033[34m¡Has derrotado al {enemy.name}!\033[0m\n"
+                  for letra in caption10:
+                    print(letra, end="", flush=True)
+                    time.sleep(0.02)
                   return
       # Turno del Enemigo
-              enemy_damage = enemy.strength
+              enemy_damage = enemy.Attack()
               damage_taken = protagonist.take_damage(enemy_damage)
-              print(f"El {enemy.name} te ataca y te hace {damage_taken} de daño. Tu health: {protagonist.health}")
+              caption11 =  f"\033[31mEl {enemy.name} te ataca y te hace {damage_taken} de daño. Tu health: {protagonist.health}\033[0m\n"
+              for letra in caption11:
+                    print(letra, end="", flush=True)
+                    time.sleep(0.02)
               time.sleep(1)
 
           if not protagonist.is_alive():
-              print(f"\nEl {enemy.name} te ha derrotado...")
+              caption12 = f"\n\033[31mEl {enemy.name} te ha derrotado...\033[0m"
+              for letra in caption12:
+                    print(letra, end="", flush=True)
+                    time.sleep(0.02)
 
 
 def quiet_advance(protagonist):
      
-    path_random = {'path1':"Continuas tu camino por la oscura y húmeda mazmorra. La sensación de desamparo te abruma, pero debes seguir adelante.", 
-    'path2':"No sé como hemos llegado aquí ni por qué, pero algo me dice que esto es obra del destino. -Dice tu compañero mientras cruzáis el umbral",
-    'path4': "Notas una ligera brisa de aire desde más adelante. Si la salida está ahí, merecerá la pena continuar sea lo que sea que enfrentes",
-    'path5': "Pisas un charco de agua. ¡Agua! Aprovechas y bebes. Tu compañero te mira con recelo. ¿Será potable? Aun así, estás muerto de sed.",
-    'path6': 'Detectas rastros de sangre por el suelo y las paredes... --se han cometido atrocidades aquí. --dices entre murmullos.',
-    'path7': 'Vaya ánimos que me traes compañero. Debemos salir de aquí antes de que se percaten de que hemos escapado de la celda.'
+    path_random = {'path1':"\033[32mContinuas tu camino por la oscura y húmeda mazmorra. La sensación de desamparo te abruma, pero debes seguir adelante.\033[0m", 
+    'path2':"\033[33mNo sé como hemos llegado aquí ni por qué, pero algo me dice que esto es obra del destino.\033[0m \033[32m-Dice tu compañero mientras cruzáis el umbral.\033[0m",
+    'path3': "\033[32mNotas una ligera brisa de aire desde más adelante. Si la salida está ahí, merecerá la pena continuar sea lo que sea que enfrentes\033[0m",
+    'path4': "\033[32mPisas un charco de agua. ¡Agua! Aprovechas y bebes. Tu compañero te mira con recelo. ¿Será potable? Aun así, estás muerto de sed.\033[0m",
+    'path5': '\033[32mDetectas rastros de sangre por el suelo y las paredes...\033[0m \033[33m-Se han cometido atrocidades aquí.\033[0m \033[32m-dices entre murmullos-.\033[0m \n'
+    '\033[33mVaya ánimos que me traes compañero. Debemos salir de aquí antes de que se percaten de que hemos escapado de la celda.\033[0m'
     } 
     path = random.choice(list(path_random.values()))
     return path 
 
 
-# Por definir
-# def choose_action(): #a medias
+def choose_action(): #a medias
 
-#     while True:
-#         decision = input ("¿Qué quieres hacer? ¿Avanzar o esperar?")
-#         if decision.lower() == "avanzar":
-#             print("Avanzas")#llamar funcion para la primera cueva
-#             break
-#         elif decision.lower() == "esperar":
-#             print("Esperando...")
-#             time.sleep(1)
-#             print("Nada sucede.")
-#             time.sleep(1)
-#             continue
+    while True:
+        decision = input ("\033[34m¿Qué quieres hacer? ¿Avanzar o esperar?: \033[0m")
+        if decision.lower() == "avanzar":
+            print("Avanzas")#llamar funcion para la primera cueva
+            break
+        elif decision.lower() == "esperar":
+            print("Esperando...")
+            time.sleep(1)
+            print("Sigues esperando...")
+            time.sleep(2)
+            print("\033[34m¿Seguro que quieres seguir esperando?\033[0m")
+            time.sleep(1)
+            print("Porque no sucede nada.")
+            time.sleep(2)
+            continue
 
 def doors():
-    how_many_doors = random.randint(1, 5)
-    print("Tienes",how_many_doors,"puertas ante ti.")
-    choose_door = input("¿Cuál eliges?")
-    print(f"has elegido la puerta {choose_door} buena suerte aventurero")
-    return choose_door
+    how_many_doors = random.randint(2, 5)
+    caption7 = ("\033[34mTienes ",how_many_doors," puertas ante ti.\033[0m\n")
+    for word in caption7:
+        print(word, end="", flush=True)
+    time.sleep(0.02)
+    while True:
+        try:
+            choose_door = int(input("¿Cuál eliges?: "))
+        except ValueError:
+            print("No es un número válido. Intenta de nuevo.")
+            continue
+        if choose_door < 1 or choose_door > how_many_doors:
+            print("¡No existe esa puerta, zopenco! Elige sabiamente")
+            continue
+        else:
+            break
+    print(f"\033[34mHas elegido la puerta {choose_door} ¡Suerte en tu porvenir!\033[0m")
+    time.sleep(2)
+
+    #return choose_door
+
+
         
+    
 
 def event(protagonist):
      event = random.choice(["trap", "combat", "nothing"])
@@ -144,6 +181,6 @@ def event(protagonist):
          trap(protagonist)
      elif event == "combat":
          combat(protagonist)
-     elif event == "quiet_advance":
+     elif event == "nothing":
          print(quiet_advance(protagonist))
 
