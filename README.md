@@ -50,6 +50,34 @@ La puerta elegida generará un evento de entre los siguientes:
               print(f"\033[34mHas elegido la puerta {choose_door} ¡Suerte en tu porvenir!\033[0m")
               time.sleep(2)
 
+EL juego se desarrollará en un bucle FOR:
+
+          for advance in range(5):
+                  time.sleep(0.75)
+                  print("", end="", flush=True)
+                  clf.doors()
+                  clf.event(protagonist)
+                    if protagonist.health <= 0:
+                      print(f"\n¡Has muerto, {protagonist.name}!")
+                      break
+    
+                    if protagonist.health > 0:
+                        final_caption = 'Has logrado escapar de la mazmorra con vida! ¡ENHORABUENA!'
+                        for letra in final_caption:
+                                print(letra, end="", flush=True)
+
+el evento a ocurrir de entre los 3 desarrollados (descritos mas adelante), se determinará con la siguiente función:
+
+          def event(protagonist):
+               event = random.choice(["trap", "combat", "nothing"])
+               if event == "trap":
+                   trap(protagonist)
+               elif event == "combat":
+                   combat(protagonist)
+               elif event == "nothing":
+                   print(quiet_advance(protagonist))
+
+### Eventos:
 
 ● Trampa:
 Una trampa se activará cuando el jugador avanza y tendrá la posibilidad de esquivarla mediante una mecánica de elección de un número del 1 al 10. Si el numero coincide con el numero que se generará aleatoriamente, logrará esquivar la trampa. Si no, recibirá daño y la aventura continuará. Habrá tambien interacciones con el npc aliado con el que contará el jugador.
