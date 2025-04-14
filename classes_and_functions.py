@@ -46,13 +46,17 @@ class Goblin(Enemy):
     def __init__(self):
         super().__init__("Goblin", health=20, strength=15)
 
+class Bloody_Unicorn(Enemy):
+    def __init__(self):
+        super().__init__("Bloody Unicorn", health=40, strength=20)
+
 class Abyss_creature(Enemy):
     def __init__(self):
         super().__init__("The creature of the abyss", health=35, strength=25)
 
 class Dungeon_boss(Enemy):
     def __init__(self):
-        super().__init__("Guardián de la Mazmorra", health=50, strength=50)
+        super().__init__("Guardián de la Mazmorra", health=50, strength=35)
 
 
 # FUNCIONES:
@@ -79,7 +83,7 @@ def trap(protagonist):
               print(f"\033[91m¡La trap se activa! Pierdes {damage} de health.\033[0m Vida restante: {protagonist.health}")
 
 def combat(protagonist):
-          possible_enemies = [Goblin(), Abyss_creature(), Dungeon_boss()]
+          possible_enemies = [Goblin(), Abyss_creature(), Dungeon_boss(), Bloody_Unicorn()]
           enemy = random.choice(possible_enemies)
           enemy.Appear()
           caption8 = "\033[31m¡Prepárate para luchar!\033[0m"
@@ -131,23 +135,30 @@ def quiet_advance(protagonist):
     return path 
 
 
-def choose_action(): #a medias
-
+def choose_action(protagonist):
+    espera_count = 0  # mantener el nombre consistente
     while True:
-        decision = input ("\033[34m¿Qué quieres hacer? ¿Avanzar o esperar?: \033[0m")
+        decision = input("\033[34m¿Qué quieres hacer? ¿Avanzar o esperar?: \033[0m")
         if decision.lower() == "avanzar":
-            print("Avanzas")#llamar funcion para la primera cueva
+            print("Avanzas")  # aquí iría tu lógica de avanzar
             break
         elif decision.lower() == "esperar":
+            espera_count += 1
             print("Esperando...")
             time.sleep(1)
             print("Sigues esperando...")
             time.sleep(2)
-            print("\033[34m¿Seguro que quieres seguir esperando?\033[0m")
-            time.sleep(1)
-            print("Porque no sucede nada.")
-            time.sleep(2)
-            continue
+            if espera_count >= 5:
+                print("\033[31mEstá bien, tú lo has querido: ¡Los monstruos aparecen!\033[0m")
+                time.sleep(1)
+                combat(protagonist)
+                continue
+            elif espera_count >= 3 and espera_count <= 3:
+                print("\033[31m¿De verdad piensas seguir esperando?\033[0m")
+                time.sleep(1)
+        else:
+            print("Elige bien (escribe 'avanzar' o 'esperar').")
+     
 
 def doors():
     how_many_doors = random.randint(2, 5)
